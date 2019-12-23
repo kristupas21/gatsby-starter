@@ -27,8 +27,38 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        options: {
+          isTSX: true, // defaults to false
+          jsxPragma: `jsx`, // defaults to "React"
+          allExtensions: true, // defaults to false
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+    },
+    {
+      resolve: 'gatsby-plugin-tslint',
+      options: {
+        test: /\.ts$|\.tsx$/,
+        exclude: /(node_modules|cache|public)/,
+      },
+    },
+    {
+      resolve: `gatsby-remark-prettier`,
+      options: {
+        // Look for local .prettierrc file.
+        // The same as `prettier.resolveConfig(process.cwd())`
+        usePrettierrc: true,
+        // Overwrite prettier options, check out https://prettier.io/docs/en/options.html
+        prettierOptions: {},
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
